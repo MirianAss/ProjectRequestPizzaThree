@@ -1,0 +1,6 @@
+framework module Pods_ProjectRequestPizzaThree {
+  umbrella header "Pods-ProjectRequestPizzaThree-umbrella.h"
+
+  export *
+  module * { export * }
+}
