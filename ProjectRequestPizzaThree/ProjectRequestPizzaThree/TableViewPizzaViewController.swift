@@ -20,14 +20,17 @@ class TableViewPizzaViewController: UIViewController {
             let pizza = try? JSONDecoder().decode(Pizza.self, from:response.data ?? Data())
             self.arrayPizza = pizza
             self.tableView.reloadData()
-            
+    
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        requestPizza()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(UINib(nibName: "PizzaTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
     }
     
 }
@@ -47,4 +50,14 @@ extension TableViewPizzaViewController: UITableViewDataSource {
         return UITableViewCell()
     }
    
+}
+extension TableViewPizzaViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let screen = self.storyboard?.instantiateViewController(withIdentifier: "rating") as? ScreenRatingViewController {
+            
+            screen.rating = arrayPizza?[indexPath.row]
+            
+            self.navigationController?.pushViewController(screen, animated: true)
+        }
+    }
 }
