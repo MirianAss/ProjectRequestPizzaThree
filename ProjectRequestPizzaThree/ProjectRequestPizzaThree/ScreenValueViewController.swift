@@ -23,6 +23,15 @@ class ScreenValueViewController: UIViewController {
         lblPizzaG.text = "GRANDE - R$\(value?.priceG ?? 0.0)"
     }
  
+    @IBAction func btRegister(_ sender: Any) {
+        if let screen = self.storyboard?.instantiateViewController(withIdentifier: "register") as? ScreenRegisterViewController {
+            
+            screen.register = self.value
+            
+            self.navigationController?.pushViewController(screen, animated: true)
+        }
+    }
+    
     @IBAction func btBack(_ sender: Any) {
         
         self.navigationController?.popToRootViewController(animated: true)
