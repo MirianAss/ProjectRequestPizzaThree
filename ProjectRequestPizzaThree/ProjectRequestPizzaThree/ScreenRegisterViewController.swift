@@ -16,12 +16,15 @@ class ScreenRegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        lblRegister.text = ""
     }
 
     @IBAction func btSaveRegister(_ sender: Any) {
+        lblRegister.text = "Dados Salvos"
     }
     
     @IBAction func btBack(_ sender: Any) {
+        
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
